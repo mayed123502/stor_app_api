@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stor_app_api/service/categories_service.dart';
-import 'package:http/http.dart' as http;
+import 'package:device_preview/device_preview.dart';
+import 'package:sizer/sizer.dart';
 
 import 'routes/routes.dart';
-import 'screens/home_page.dart';
 
 void main() async {
-  runApp(const StoreApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+
+      builder: (context) => StoreApp(), // Wrap your app
+    ),
+  );
 }
 
 class StoreApp extends StatelessWidget {
@@ -15,11 +20,12 @@ class StoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-         getPages: AppRoutes.routes,
-
-      initialRoute: AppRoutes.mainSreen,
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        getPages: AppRoutes.routes,
+        initialRoute: AppRoutes.mainSreen,
+      );
+    });
   }
 }

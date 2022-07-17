@@ -1,3 +1,4 @@
+import 'package:sizer/sizer.dart';
 import 'package:stor_app_api/models/rating.dart';
 
 class ProdectModel {
@@ -10,8 +11,7 @@ class ProdectModel {
   Rating? rating;
 
   ProdectModel(
-      {
-        required this.id,
+      {required this.id,
       required this.title,
       required this.price,
       required this.description,
@@ -21,7 +21,7 @@ class ProdectModel {
   ProdectModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
-    price = json['price'] ;
+    price = json['price'];
     description = json['description'];
     image = json['image'];
     rating =
@@ -41,4 +41,7 @@ class ProdectModel {
 
     return data;
   }
+
+
+
 }
